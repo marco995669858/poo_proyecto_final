@@ -6,7 +6,7 @@ public class Estudiante {
 	
 	private String dni;
 	
-	private int anioIngreso;
+	private String anioIngreso;
 	
 	private String escuela;
 	
@@ -24,7 +24,7 @@ public class Estudiante {
 	
 	public Estudiante() {}
 
-	public Estudiante(int idEstudiante, String dni, int anioIngreso, String escuela, String facultad, String apellidos,
+	public Estudiante(int idEstudiante, String dni, String anioIngreso, String escuela, String facultad, String apellidos,
 			String nombres, String direccion, String telefono, String usuario) {
 		this.idEstudiante = idEstudiante;
 		this.dni = dni;
@@ -54,11 +54,11 @@ public class Estudiante {
 		this.dni = dni;
 	}
 
-	public int getAnioIngreso() {
+	public String getAnioIngreso() {
 		return anioIngreso;
 	}
 
-	public void setAnioIngreso(int anioIngreso) {
+	public void setAnioIngreso(String anioIngreso) {
 		this.anioIngreso = anioIngreso;
 	}
 
