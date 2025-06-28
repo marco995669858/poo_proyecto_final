@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import mantenimiento.JfCurso;
+import mantenimiento.JfDocente;
 
 public class Principal extends JFrame implements ActionListener {
 
@@ -130,9 +131,10 @@ public class Principal extends JFrame implements ActionListener {
 		} else if (e.getSource() == mntmCursos) {
 			Mostrar(JfCurso.getInstance(), desktopPane);
 
-//		} else if (e.getSource() == mntmConsultarTv) {
-//			Mostrar(ConsultarTelevisor.getInstance(), desktopPane);
-//		} else if (e.getSource() ==  mntmModificarTv) {
+		} else if (e.getSource() == mntmDocente) {
+			Mostrar(JfDocente.getInstance(), desktopPane);
+		//} 
+		//else if (e.getSource() ==  mntmModificarTv) {
 //			Mostrar(ModificarTV.getInstance(), desktopPane);
 //		} else if(e.getSource() == mntmListarTv){
 //			Mostrar(ListarTVs.getInstance(), desktopPane);

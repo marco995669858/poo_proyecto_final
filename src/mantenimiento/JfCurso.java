@@ -118,7 +118,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		contentPane.add(btnEditar);
 
 		jtListadoCurso = new JTable();
-		jtListadoCurso.setModel(new DefaultTableModel(null, new String[] { "ID", "Nombre del Curso", "Cr\u00E9dito" }));
+		jtListadoCurso.setModel(new DefaultTableModel(null, global.columnasCursos));
 		jtListadoCurso.addMouseListener(this);
 		JScrollPane scrollPane = new JScrollPane(jtListadoCurso);
 		scrollPane.setBounds(21, 172, 519, 184);
@@ -250,7 +250,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 			JOptionPane.showMessageDialog(null, isValidacion, "Validación de datos.", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-
+		
 		if (idCurso > 0) {
 			System.out.println(idCurso);
 			Curso nuevoCurso = new Curso(idCurso, txtNombreCurso.getText(), (Integer) jsCredito.getValue(),

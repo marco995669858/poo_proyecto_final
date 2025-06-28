@@ -25,7 +25,7 @@ public class CursoDAO {
 
 			while (rs.next()) {
 				curso.add(new Curso(rs.getInt("ID_CURSO"), rs.getString("NOMBRE_CURSO"), rs.getInt("CREDITO"),
-						rs.getString("NOMBRE_CURSO")));
+						rs.getString("TX_USUREG")));
 			}
 		} catch (Exception e) {
 			System.err.println("Error al obtener usuarios: " + e.getMessage());
