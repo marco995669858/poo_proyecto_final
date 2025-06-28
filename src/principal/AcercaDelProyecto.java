@@ -8,15 +8,15 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 
-public class AcercaDeTienda extends JInternalFrame implements ActionListener {
+public class AcercaDelProyecto extends JInternalFrame implements ActionListener {
 	
 	JButton btnCancelar;
 
-	static AcercaDeTienda acercaTienda;
+	static AcercaDelProyecto acercaTienda;
 	
-	public static AcercaDeTienda getInstance() {
+	public static AcercaDelProyecto getInstance() {
 		if (acercaTienda == null) {
-			acercaTienda = new AcercaDeTienda();
+			acercaTienda = new AcercaDelProyecto();
 		}
 		
 		return acercaTienda;
@@ -25,11 +25,11 @@ public class AcercaDeTienda extends JInternalFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public AcercaDeTienda() {
+	public AcercaDelProyecto() {
 		setBounds(100, 100, 458, 259);
 		getContentPane().setLayout(null);
 		
-		JLabel lblTienda = new JLabel("Tienda 1.0");
+		JLabel lblTienda = new JLabel("COLEGIO FE Y ALEGRIA 1.0");
 		lblTienda.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTienda.setBounds(165, 11, 98, 14);
 		getContentPane().add(lblTienda);
@@ -74,7 +74,7 @@ public class AcercaDeTienda extends JInternalFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource() == btnCancelar) {
-			AcercaDeTienda.this.setVisible(false);
+			AcercaDelProyecto.this.setVisible(false);
 		}
 	}
 }

@@ -1,6 +1,5 @@
 package mantenimiento;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,22 +21,22 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import conexionBD.CursoDAO;
 import entidad.Curso;
-import entidad.global;
+import repositorio.CursoDAO;
+import util.global;
 
-public class JfCurso extends JFrame implements ActionListener, MouseListener {
+public class JfCurso extends JInternalFrame implements ActionListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private CursoDAO repositorio = new CursoDAO();
 	private JPanel contentPane;
-	
+
 	private int idCurso = 0;
 
 	/**
 	 * Launch the application.
 	 */
-	// static JfCurso jCurso;
+	static JfCurso jCurso;
 	JTextField txtNombreCurso;
 	JButton btnGuardar;
 	JButton btnCancelar;
@@ -46,21 +46,11 @@ public class JfCurso extends JFrame implements ActionListener, MouseListener {
 	JTable jtListadoCurso;
 	JSpinner jsCredito;
 
-	/*
-	 * public static JfCurso getInstance() { if (jCurso == null) { jCurso = new
-	 * JfCurso(); } return jCurso; }
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JfCurso frame = new JfCurso();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static JfCurso getInstance() {
+		if (jCurso == null) {
+			jCurso = new JfCurso();
+		}
+		return jCurso;
 	}
 
 	/**
@@ -162,7 +152,7 @@ public class JfCurso extends JFrame implements ActionListener, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		int filaSeleccionada = jtListadoCurso.getSelectedRow();
 
-		if (filaSeleccionada != -1) { 
+		if (filaSeleccionada != -1) {
 			TableModel modelo = jtListadoCurso.getModel();
 			idCurso = (int) modelo.getValueAt(filaSeleccionada, 0);
 			txtNombreCurso.setText((String) modelo.getValueAt(filaSeleccionada, 1));
@@ -170,7 +160,7 @@ public class JfCurso extends JFrame implements ActionListener, MouseListener {
 			btnGuardar.setEnabled(false);
 			btnEditar.setEnabled(true);
 			btnEliminar.setEnabled(true);
-			
+
 		}
 	}
 
@@ -229,7 +219,7 @@ public class JfCurso extends JFrame implements ActionListener, MouseListener {
 			fila[2] = c.getCredito();
 			modelo.addRow(fila);
 		}
-		/*RESTABLECER VALORES*/
+		/* RESTABLECER VALORES */
 		limpiar();
 	}
 
@@ -244,7 +234,7 @@ public class JfCurso extends JFrame implements ActionListener, MouseListener {
 
 		return null;
 	}
-	
+
 	void limpiar() {
 		idCurso = 0;
 		txtNombreCurso.setText(null);
@@ -253,17 +243,18 @@ public class JfCurso extends JFrame implements ActionListener, MouseListener {
 		btnEditar.setEnabled(false);
 		btnEliminar.setEnabled(false);
 	}
-	
-	void editarCurso(){
+
+	void editarCurso() {
 		String isValidacion = validarCampos();
 		if (isValidacion != null) {
 			JOptionPane.showMessageDialog(null, isValidacion, "Validación de datos.", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		
-		if(idCurso > 0) {
+
+		if (idCurso > 0) {
 			System.out.println(idCurso);
-			Curso nuevoCurso = new Curso(idCurso, txtNombreCurso.getText(), (Integer) jsCredito.getValue(), global.usuario);
+			Curso nuevoCurso = new Curso(idCurso, txtNombreCurso.getText(), (Integer) jsCredito.getValue(),
+					global.usuario);
 			boolean resultado = repositorio.actualizarCurso(nuevoCurso);
 
 			if (resultado) {
@@ -273,11 +264,11 @@ public class JfCurso extends JFrame implements ActionListener, MouseListener {
 				JOptionPane.showMessageDialog(this, "Error al editar el curso", "Error", JOptionPane.WARNING_MESSAGE);
 			}
 		}
-		
+
 	}
-	
-	void eliminarCurso() {		
-		if(idCurso > 0) {
+
+	void eliminarCurso() {
+		if (idCurso > 0) {
 			boolean resultado = repositorio.eliminarCurso(idCurso);
 
 			if (resultado) {

@@ -1,4 +1,4 @@
-package conexionBD;
+package repositorio;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,8 +9,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import conexionBD.ConexionBD;
 import entidad.Curso;
-import entidad.global;
+import util.global;
 
 public class CursoDAO {
 
