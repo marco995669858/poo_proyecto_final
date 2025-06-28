@@ -89,7 +89,7 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 		btnEliminar.setBounds(422, 145, 91, 21);
 		btnEliminar.addActionListener(this);
 		contentPane.add(btnEliminar);
-		btnEliminar.setEnabled(false);
+		btnEliminar.setEnabled(false); 
 		
 		btnEditar = new JButton("Editar");
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
