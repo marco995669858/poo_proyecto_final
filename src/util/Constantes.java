@@ -6,5 +6,7 @@ public class Constantes {
 	
 	public static String[] COLUMNAS_DOCENTES = {"ID", "Dni", "Apellidos", "Nombres", "Especialidad", "Dirección", "Telefono"};
 	
+	public static String[] COLUMNAS_ESTUDIANTES = {"ID", "Dni", "Año de ingreso", "Escuela", "Facultada", "Apellidos", "Nombres", "Dirección", "Telefono"};
+	
 	public static String USUARIO = "75058989";
 }
