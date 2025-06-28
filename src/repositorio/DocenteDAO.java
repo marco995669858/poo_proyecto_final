@@ -9,9 +9,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import conexionBD.ConexionBD;
+import conexionbd.ConexionBD;
 import entidad.Docente;
-import util.global;
+import util.Constantes;
 
 public class DocenteDAO {
 	public List<Docente> obtenerDocentes() {
@@ -68,10 +68,13 @@ public class DocenteDAO {
 	}
 
 	public boolean actualizarDocente(Docente docente) {
+		// Consulta SQL parametrizada para actualizar un docente por su ID
 		String sql = "UPDATE tb_docente SET DNI = ?, APELLIDOS = ?,NOMBRES = ?, EPECIALIDAD = ? , DIRECCION = ? , TELEFONO = ? , TX_USUACT = ? , FE_FECHA_ACT = ? WHERE ID_DOCENTE = ?";
 
-		try (Connection conn = ConexionBD.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+		try (Connection conn = ConexionBD.getConnection(); // Obtiene conexión a la BD
+				PreparedStatement pstmt = conn.prepareStatement(sql)) { // Preparar la consulta SQL
+			
+			// Asignar valores a los parámetros de la consulta
 			pstmt.setString(1, docente.getDni());
 			pstmt.setString(2, docente.getApellidos());
 			pstmt.setString(3, docente.getNombres());
@@ -81,25 +84,28 @@ public class DocenteDAO {
 			pstmt.setString(7, docente.getUsuario());
 			pstmt.setTimestamp(8, new Timestamp(System.currentTimeMillis()));
 			pstmt.setInt(9, docente.getIdDocente());
-
+			
+			// Ejecutar la actualización
 			int filasActualizadas = pstmt.executeUpdate();
-
+			
+			// Devolver true si se actualizó al menos una fila
 			return filasActualizadas > 0;
 
 		} catch (SQLException e) {
+			// Manejo de errores en la base de datos
 			System.err.println("❌ Error al actualizar docente: " + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
 	}
-
+	
 	public boolean eliminarDocente(Integer idDocente) {
 		String sql = "UPDATE tb_docente SET TX_FSITREG = ?, TX_USUELI = ?, FE_FECHA_ELI = ? WHERE ID_DOCENTE = ?";
 
 		try (Connection conn = ConexionBD.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			pstmt.setString(1, "0");
-			pstmt.setString(2, global.usuario);
+			pstmt.setString(2, Constantes.USUARIO);
 			pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
 			pstmt.setInt(4, idDocente);
 

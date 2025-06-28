@@ -9,9 +9,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import conexionBD.ConexionBD;
+import conexionbd.ConexionBD;
 import entidad.Curso;
-import util.global;
+import util.Constantes;
 
 public class CursoDAO {
 
@@ -65,23 +65,27 @@ public class CursoDAO {
     }
 	
 	public boolean actualizarCurso(Curso curso) {
+	    // Consulta SQL parametrizada para actualizar un curso por su ID
         String sql = "UPDATE tb_curso SET NOMBRE_CURSO = ?, CREDITO = ?,TX_USUACT = ?, FE_FECHA_ACT = ? WHERE ID_CURSO = ?";
 
-        try (Connection conn = ConexionBD.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
+        try (Connection conn = ConexionBD.getConnection(); // Obtiene conexión a la BD
+             PreparedStatement pstmt = conn.prepareStatement(sql)) { // Preparar la consulta SQL
+        	
+        	// Asignar valores a los parámetros de la consulta
             pstmt.setString(1, curso.getNombreCurso());
             pstmt.setInt(2, curso.getCredito());
             pstmt.setString(3, curso.getUsuario());
             pstmt.setTimestamp(4,  new Timestamp(System.currentTimeMillis()));
             pstmt.setInt(5, curso.getIdCurso());
             
-
+            // Ejecutar la actualización
             int filasActualizadas = pstmt.executeUpdate();
-
+            
+         	// Devolver true si se actualizó al menos una fila
             return filasActualizadas > 0;
 
         } catch (SQLException e) {
+        	// Manejo de errores en la base de datos
             System.err.println("❌ Error al actualizar curso: " + e.getMessage());
             e.printStackTrace();
             return false;
@@ -95,7 +99,7 @@ public class CursoDAO {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, "0");
-            pstmt.setString(2, global.usuario);
+            pstmt.setString(2, Constantes.USUARIO);
             pstmt.setTimestamp(3,  new Timestamp(System.currentTimeMillis()));
             pstmt.setInt(4, idCurso);
 

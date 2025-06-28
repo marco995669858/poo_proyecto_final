@@ -1,30 +1,24 @@
 package mantenimiento;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class JfEstudiante extends JFrame {
+public class JfEstudiante extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	static JfEstudiante jEstudiante;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JfEstudiante frame = new JfEstudiante();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static JfEstudiante getInstance() {
+		if (jEstudiante == null) {
+			jEstudiante = new JfEstudiante();
+		}
+		return jEstudiante;
 	}
 
 	/**

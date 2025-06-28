@@ -1,32 +1,25 @@
 package mantenimiento;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class JfMatricula extends JFrame {
+public class JfMatricula extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	static JfMatricula jMatricula;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					JfMatricula frame = new JfMatricula();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static JfMatricula getInstance() {
+		if (jMatricula == null) {
+			jMatricula = new JfMatricula();
+		}
+		return jMatricula;
 	}
-
 	/**
 	 * Create the frame.
 	 */

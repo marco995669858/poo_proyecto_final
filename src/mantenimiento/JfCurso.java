@@ -23,7 +23,7 @@ import javax.swing.table.TableModel;
 
 import entidad.Curso;
 import repositorio.CursoDAO;
-import util.global;
+import util.Constantes;
 
 public class JfCurso extends JInternalFrame implements ActionListener, MouseListener {
 
@@ -118,7 +118,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		contentPane.add(btnEditar);
 
 		jtListadoCurso = new JTable();
-		jtListadoCurso.setModel(new DefaultTableModel(null, global.columnasCursos));
+		jtListadoCurso.setModel(new DefaultTableModel(null, Constantes.COLUMNAS_CURSOS));
 		jtListadoCurso.addMouseListener(this);
 		JScrollPane scrollPane = new JScrollPane(jtListadoCurso);
 		scrollPane.setBounds(21, 172, 519, 184);
@@ -194,7 +194,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 			JOptionPane.showMessageDialog(null, isValidacion, "Validación de datos.", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		Curso nuevoCurso = new Curso(0, txtNombreCurso.getText(), (Integer) jsCredito.getValue(), global.usuario);
+		Curso nuevoCurso = new Curso(0, txtNombreCurso.getText(), (Integer) jsCredito.getValue(), Constantes.USUARIO);
 		boolean resultado = repositorio.guardarCurso(nuevoCurso);
 
 		if (resultado) {
@@ -254,7 +254,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		if (idCurso > 0) {
 			System.out.println(idCurso);
 			Curso nuevoCurso = new Curso(idCurso, txtNombreCurso.getText(), (Integer) jsCredito.getValue(),
-					global.usuario);
+					Constantes.USUARIO);
 			boolean resultado = repositorio.actualizarCurso(nuevoCurso);
 
 			if (resultado) {

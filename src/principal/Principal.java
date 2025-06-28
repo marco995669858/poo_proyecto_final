@@ -22,6 +22,9 @@ import javax.swing.border.EmptyBorder;
 
 import mantenimiento.JfCurso;
 import mantenimiento.JfDocente;
+import mantenimiento.JfEncargadoMatricula;
+import mantenimiento.JfEstudiante;
+import mantenimiento.JfMatricula;
 
 public class Principal extends JFrame implements ActionListener {
 
@@ -133,23 +136,12 @@ public class Principal extends JFrame implements ActionListener {
 
 		} else if (e.getSource() == mntmDocente) {
 			Mostrar(JfDocente.getInstance(), desktopPane);
-		//} 
-		//else if (e.getSource() ==  mntmModificarTv) {
-//			Mostrar(ModificarTV.getInstance(), desktopPane);
-//		} else if(e.getSource() == mntmListarTv){
-//			Mostrar(ListarTVs.getInstance(), desktopPane);
-//		} else if(e.getSource() == mntmVender){
-//			Mostrar(Vender.getInstance(), desktopPane);
-//		} else if(e.getSource() == mntmGenerarReportes){
-//			Mostrar(GenerarReportes.getInstance(), desktopPane);
-//		} else if (e.getSource() == mntmConfigurarDescuentos) {
-//			Mostrar(ConfigurarDescuento.getInstance(), desktopPane);
-//		} else if (e.getSource() == mntmConfigurarObsequios) {
-//			Mostrar(ConfigurarObsequio.getInstance(), desktopPane);
-//		} else if (e.getSource() == mntmConfigurarCantidadOptima) {
-//			Mostrar(ConfigurarCantidadOptima.getInstance(), desktopPane);
-//		} else if (e.getSource() == mntmConfigurarCuotaDiaria) {
-//			Mostrar(ConfigurarCuotaDiaria.getInstance(), desktopPane);
+		} else if (e.getSource() ==  mntmEstudiantes) {
+			Mostrar(JfEstudiante.getInstance(), desktopPane);
+		} else if(e.getSource() == mntmEncargadoMatricula){
+			Mostrar(JfEncargadoMatricula.getInstance(), desktopPane);
+		} else if(e.getSource() == mntmMatricula){
+			Mostrar(JfMatricula.getInstance(), desktopPane);
 		} else if (e.getSource() == mntmAcercaDeTienda) {
 			Mostrar(AcercaDelProyecto.getInstance(), desktopPane);
 		}

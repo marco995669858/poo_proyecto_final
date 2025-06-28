@@ -22,17 +22,17 @@ import javax.swing.table.TableModel;
 
 import entidad.Docente;
 import repositorio.DocenteDAO;
-import util.global;
+import util.Constantes;
 
-public class JfDocente extends JInternalFrame implements ActionListener, MouseListener{
+public class JfDocente extends JInternalFrame implements ActionListener, MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	private DocenteDAO repositorio = new DocenteDAO();
 	private JPanel contentPane;
 	static JfDocente jDocente;
-	
+
 	private int idDocente = 0;
-	
+
 	JTextField txtDni;
 	JTextField txtApellidos;
 	JTextField txtNombres;
@@ -45,6 +45,7 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 	JButton btnListar;
 	JButton btnEliminar;
 	JTable jtListadoDocente;
+
 	/**
 	 * Launch the application.
 	 */
@@ -66,121 +67,121 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblDni = new JLabel("Dni:");
 		lblDni.setBounds(36, 51, 39, 21);
 		contentPane.add(lblDni);
 		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
+
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnCancelar.setBounds(310, 414, 91, 21);		
+		btnCancelar.setBounds(310, 414, 91, 21);
 		btnCancelar.addActionListener(this);
 		contentPane.add(btnCancelar);
-		
+
 		btnListar = new JButton("Listar");
 		btnListar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnListar.setBounds(10, 145, 91, 21);
 		btnListar.addActionListener(this);
 		contentPane.add(btnListar);
-		
+
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEliminar.setBounds(422, 145, 91, 21);
 		btnEliminar.addActionListener(this);
 		contentPane.add(btnEliminar);
-		btnEliminar.setEnabled(false); 
-		
+		btnEliminar.setEnabled(false);
+
 		btnEditar = new JButton("Editar");
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEditar.setBounds(523, 145, 91, 21);
 		btnEditar.addActionListener(this);
 		contentPane.add(btnEditar);
 		btnEditar.setEnabled(false);
-		
+
 		btnGuardar = new JButton("Registrar");
 		btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnGuardar.setBounds(624, 145, 91, 21);
 		btnGuardar.addActionListener(this);
 		contentPane.add(btnGuardar);
 		btnGuardar.setEnabled(true);
-		
+
 		txtDni = new JTextField();
 		txtDni.setBounds(96, 54, 159, 19);
 		contentPane.add(txtDni);
 		txtDni.setText((String) null);
 		txtDni.setColumns(10);
-		
+
 		JLabel lblTitulo = new JLabel("MANTENIMIENTO DE DOCENTES");
 		lblTitulo.setBounds(257, 10, 259, 35);
 		contentPane.add(lblTitulo);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
+
 		JLabel lblApellidos = new JLabel("Apellidos:");
 		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblApellidos.setBounds(265, 51, 64, 21);
 		contentPane.add(lblApellidos);
-		
+
 		txtApellidos = new JTextField();
 		txtApellidos.setText((String) null);
 		txtApellidos.setColumns(10);
 		txtApellidos.setBounds(330, 54, 153, 19);
 		contentPane.add(txtApellidos);
-		
+
 		JLabel lblNombres = new JLabel("Nombres:");
 		lblNombres.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNombres.setBounds(493, 51, 64, 21);
 		contentPane.add(lblNombres);
-		
+
 		txtNombres = new JTextField();
 		txtNombres.setText((String) null);
 		txtNombres.setColumns(10);
 		txtNombres.setBounds(562, 54, 153, 19);
 		contentPane.add(txtNombres);
-		
+
 		JLabel lblEspecialidad = new JLabel("Especialidad");
 		lblEspecialidad.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblEspecialidad.setBounds(10, 94, 81, 21);
 		contentPane.add(lblEspecialidad);
-		
+
 		txtEspecialidad = new JTextField();
 		txtEspecialidad.setText((String) null);
 		txtEspecialidad.setColumns(10);
 		txtEspecialidad.setBounds(96, 97, 159, 19);
 		contentPane.add(txtEspecialidad);
-		
+
 		JLabel lblDireccin = new JLabel("Dirección:");
 		lblDireccin.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblDireccin.setBounds(265, 94, 64, 21);
 		contentPane.add(lblDireccin);
-		
+
 		txtDireccion = new JTextField();
 		txtDireccion.setText((String) null);
 		txtDireccion.setColumns(10);
 		txtDireccion.setBounds(330, 97, 153, 19);
 		contentPane.add(txtDireccion);
-		
+
 		JLabel lblTelefono = new JLabel("Telefono:");
 		lblTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTelefono.setBounds(493, 94, 64, 21);
 		contentPane.add(lblTelefono);
-		
+
 		txtTelefono = new JTextField();
 		txtTelefono.setText((String) null);
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(562, 97, 153, 19);
 		contentPane.add(txtTelefono);
-		
+
 		jtListadoDocente = new JTable();
-		jtListadoDocente.setModel(new DefaultTableModel(null, global.columnasDocentes));
+		jtListadoDocente.setModel(new DefaultTableModel(null, Constantes.COLUMNAS_DOCENTES));
 		jtListadoDocente.addMouseListener(this);
 		JScrollPane scrollPane = new JScrollPane(jtListadoDocente);
 		scrollPane.setBounds(10, 189, 705, 215);
 		contentPane.add(scrollPane);
-		
+
 		llenarTablaDocente();
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnGuardar) {
@@ -197,7 +198,7 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 		}
 
 	}
-	
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int filaSeleccionada = jtListadoDocente.getSelectedRow();
@@ -248,7 +249,8 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 			JOptionPane.showMessageDialog(null, isValidacion, "Validación de datos.", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		Docente nuevoDocente= new Docente(0, txtDni.getText(), txtApellidos.getText(),txtNombres.getText(),txtEspecialidad.getText(),txtDireccion.getText(),txtTelefono.getText(), global.usuario);
+		Docente nuevoDocente = new Docente(0, txtDni.getText(), txtApellidos.getText(), txtNombres.getText(),
+				txtEspecialidad.getText(), txtDireccion.getText(), txtTelefono.getText(), Constantes.USUARIO);
 		boolean resultado = repositorio.guardarDocente(nuevoDocente);
 
 		if (resultado) {
@@ -289,19 +291,19 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 		if (txtApellidos.getText().isBlank() || txtApellidos.getText().isEmpty()) {
 			return "Ingrese sus apellidos.";
 		}
-		
+
 		if (txtNombres.getText().isBlank() || txtNombres.getText().isEmpty()) {
 			return "Ingrese sus nombres.";
 		}
-		
+
 		if (txtEspecialidad.getText().isBlank() || txtEspecialidad.getText().isEmpty()) {
 			return "Ingrese una especialidad.";
 		}
-		
+
 		if (txtDireccion.getText().isBlank() || txtDireccion.getText().isEmpty()) {
 			return "Ingrese una direccion.";
 		}
-		
+
 		if (txtTelefono.getText().isBlank() || txtTelefono.getText().isEmpty()) {
 			return "Ingrese un número de telefono.";
 		}
@@ -331,7 +333,9 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 		}
 		System.out.println(idDocente);
 		if (idDocente > 0) {
-			Docente nuevoDocente = new Docente(idDocente, txtDni.getText(), txtApellidos.getText(),txtNombres.getText(),txtEspecialidad.getText(),txtDireccion.getText(),txtTelefono.getText(), global.usuario);
+			Docente nuevoDocente = new Docente(idDocente, txtDni.getText(), txtApellidos.getText(),
+					txtNombres.getText(), txtEspecialidad.getText(), txtDireccion.getText(), txtTelefono.getText(),
+					Constantes.USUARIO);
 			boolean resultado = repositorio.actualizarDocente(nuevoDocente);
 
 			if (resultado) {
@@ -352,7 +356,8 @@ public class JfDocente extends JInternalFrame implements ActionListener, MouseLi
 				JOptionPane.showMessageDialog(this, "Docente eliminado correctamente");
 				llenarTablaDocente();
 			} else {
-				JOptionPane.showMessageDialog(this, "Error al eliminar el Docente", "Error", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Error al eliminar el Docente", "Error",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}
