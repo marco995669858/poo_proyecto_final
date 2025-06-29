@@ -1,6 +1,5 @@
 package mantenimiento;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +21,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import entidad.Docente;
 import entidad.Estudiante;
 import repositorio.EstudianteDTO;
 import util.Constantes;
@@ -397,7 +395,5 @@ public class JfEstudiante extends JInternalFrame implements ActionListener, Mous
 						JOptionPane.WARNING_MESSAGE);
 			}
 		}
-	}
-	
-	
+	}	
 }
