@@ -72,7 +72,7 @@ public class Principal extends JFrame implements ActionListener {
 			}
 		});
 		setExtendedState(Frame.MAXIMIZED_BOTH);
-		setTitle("Ventas de Televisores");
+		setTitle("Colegio Fe y Alegria");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		// setUndecorated(true);
@@ -159,7 +159,7 @@ public class Principal extends JFrame implements ActionListener {
 
 		Dimension desktopSize = dp.getSize();
 		Dimension frameSize = jif.getSize();
-		jif.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
+		jif.setLocation((desktopSize.width - frameSize.width) / 4, (desktopSize.height - frameSize.height) / 4);
 	}
 
 	void Salir() {

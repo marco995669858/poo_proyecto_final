@@ -98,7 +98,6 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		contentPane.add(btnCancelar);
 
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setEnabled(false);
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEliminar.setBounds(239, 127, 91, 21);
 		btnEliminar.addActionListener(this);
@@ -111,7 +110,6 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		contentPane.add(btnListar);
 
 		btnEditar = new JButton("Editar");
-		btnEditar.setEnabled(false);
 		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEditar.setBounds(340, 127, 91, 21);
 		btnEditar.addActionListener(this);
@@ -129,7 +127,6 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		contentPane.add(jsCredito);
 
 		llenarTablaCursos();
-
 	}
 
 	@Override
@@ -200,6 +197,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		if (resultado) {
 			JOptionPane.showMessageDialog(this, "Curso guardado correctamente");
 			llenarTablaCursos();
+			limpiar();
 		} else {
 			JOptionPane.showMessageDialog(this, "Error al guardar el curso", "Error", JOptionPane.WARNING_MESSAGE);
 		}
@@ -219,8 +217,8 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 			fila[2] = c.getCredito();
 			modelo.addRow(fila);
 		}
-		/* RESTABLECER VALORES */
-		limpiar();
+		
+		limpiar(false);
 	}
 
 	private String validarCampos() {
@@ -243,6 +241,17 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		btnEditar.setEnabled(false);
 		btnEliminar.setEnabled(false);
 	}
+	
+	void limpiar(boolean limpiarCamposTexto) {
+		if(limpiarCamposTexto) {
+			idCurso = 0;
+			txtNombreCurso.setText(null);
+			jsCredito.setValue(0);
+		}		
+		btnGuardar.setEnabled(true);
+		btnEditar.setEnabled(false);
+		btnEliminar.setEnabled(false);
+	}
 
 	void editarCurso() {
 		String isValidacion = validarCampos();
@@ -260,6 +269,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 			if (resultado) {
 				JOptionPane.showMessageDialog(this, "Curso editado correctamente");
 				llenarTablaCursos();
+				limpiar();
 			} else {
 				JOptionPane.showMessageDialog(this, "Error al editar el curso", "Error", JOptionPane.WARNING_MESSAGE);
 			}
@@ -274,6 +284,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 			if (resultado) {
 				JOptionPane.showMessageDialog(this, "Curso eliminado correctamente");
 				llenarTablaCursos();
+				limpiar();
 			} else {
 				JOptionPane.showMessageDialog(this, "Error al eliminar el curso", "Error", JOptionPane.WARNING_MESSAGE);
 			}
