@@ -6,7 +6,7 @@ public class EncargadoMatricula {
 	
 	private String cargo;
 	
-	private int dni;
+	private String dni;
 	
 	private String direccion;
 	
@@ -20,7 +20,7 @@ public class EncargadoMatricula {
 	
 	public EncargadoMatricula() {}
 
-	public EncargadoMatricula(int idEncargadoMatricula, String cargo, int dni, String direccion, String apellidos,
+	public EncargadoMatricula(int idEncargadoMatricula, String cargo, String dni, String direccion, String apellidos,
 			String nombres, String telefono, String usuario) {
 		this.idEncargadoMatricula = idEncargadoMatricula;
 		this.cargo = cargo;
@@ -48,11 +48,11 @@ public class EncargadoMatricula {
 		this.cargo = cargo;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
