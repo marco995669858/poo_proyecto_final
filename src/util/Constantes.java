@@ -12,5 +12,5 @@ public class Constantes {
 	
 	public static String USUARIO = "75058989";
 	
-	//PARA HACER EL CASO DEL GIT REVERT DE EJEMPLO
+	//PARA HACER EL CASO DEL GIT REVERT DE EJEMPLO PRUEBA
 }
