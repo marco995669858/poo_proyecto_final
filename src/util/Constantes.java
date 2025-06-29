@@ -11,4 +11,6 @@ public class Constantes {
 	public static String[] COLUMNAS_ENCARGADO_MATRICULA= {"ID", "Cargo", "Dni", "Dirección", "Apellidos", "Nombres", "Telefono"};
 	
 	public static String USUARIO = "75058989";
+	
+	//MENSAJE PRUEBA
 }
