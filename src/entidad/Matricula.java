@@ -12,28 +12,28 @@ public class Matricula {
 	
 	private String seccion;
 	
-	private int idEstudiante;
+	private Estudiante estudiante;
 	
-	private int idDocente;
+	private Docente docente;
 	
-	private int idCurso;
+	private Curso curso;
 	
-	private int idEncargadoMatricula;
+	private EncargadoMatricula encargadoMatricula;
 	
 	private String usuario;
 	
 	public Matricula() {}
 
-	public Matricula(int idMatricula, String ciclo, Date fecha, String seccion, int idEstudiante, int idDocente,
-			int idCurso, int idEncargadoMatricula, String usuario) {
+	public Matricula(int idMatricula, String ciclo, Date fecha, String seccion, Estudiante estudiante, Docente docente,
+			Curso curso, EncargadoMatricula encargadoMatricula, String usuario) {
 		this.idMatricula = idMatricula;
 		this.ciclo = ciclo;
 		this.fecha = fecha;
 		this.seccion = seccion;
-		this.idEstudiante = idEstudiante;
-		this.idDocente = idDocente;
-		this.idCurso = idCurso;
-		this.idEncargadoMatricula = idEncargadoMatricula;
+		this.estudiante = estudiante;
+		this.docente = docente;
+		this.curso = curso;
+		this.encargadoMatricula = encargadoMatricula;
 		this.usuario = usuario;
 	}
 
@@ -69,36 +69,36 @@ public class Matricula {
 		this.seccion = seccion;
 	}
 
-	public int getIdEstudiante() {
-		return idEstudiante;
+	public Estudiante getEstudiante() {
+		return estudiante;
 	}
 
-	public void setIdEstudiante(int idEstudiante) {
-		this.idEstudiante = idEstudiante;
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
 	}
 
-	public int getIdDocente() {
-		return idDocente;
+	public Docente getDocente() {
+		return docente;
 	}
 
-	public void setIdDocente(int idDocente) {
-		this.idDocente = idDocente;
+	public void setDocente(Docente docente) {
+		this.docente = docente;
 	}
 
-	public int getIdCurso() {
-		return idCurso;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setIdCurso(int idCurso) {
-		this.idCurso = idCurso;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
-	public int getIdEncargadoMatricula() {
-		return idEncargadoMatricula;
+	public EncargadoMatricula getEncargadoMatricula() {
+		return encargadoMatricula;
 	}
 
-	public void setIdEncargadoMatricula(int idEncargadoMatricula) {
-		this.idEncargadoMatricula = idEncargadoMatricula;
+	public void setEncargadoMatricula(EncargadoMatricula encargadoMatricula) {
+		this.encargadoMatricula = encargadoMatricula;
 	}
 
 	public String getUsuario() {
@@ -107,6 +107,5 @@ public class Matricula {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-	
+	}	
 }

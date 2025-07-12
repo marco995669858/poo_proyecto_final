@@ -208,7 +208,7 @@ public class JfCurso extends JInternalFrame implements ActionListener, MouseList
 		DefaultTableModel modelo = (DefaultTableModel) jtListadoCurso.getModel();
 		modelo.setRowCount(0);
 
-		List<Curso> listaCursos = repositorio.obtenerUsuarios();
+		List<Curso> listaCursos = repositorio.obtenerCursos();
 
 		for (Curso c : listaCursos) {
 			Object[] fila = new Object[3];

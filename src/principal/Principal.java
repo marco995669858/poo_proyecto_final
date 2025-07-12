@@ -113,7 +113,7 @@ public class Principal extends JFrame implements ActionListener {
 		JMenu mnAyuda = new JMenu("Ayuda");
 		menuBar.add(mnAyuda);
 
-		mntmAcercaDeTienda = new JMenuItem("Acerca de tienda");
+		mntmAcercaDeTienda = new JMenuItem("Acerca del Colegio");
 		mntmAcercaDeTienda.addActionListener(this);
 		mnAyuda.add(mntmAcercaDeTienda);
 		contentPane = new JPanel();
@@ -159,7 +159,7 @@ public class Principal extends JFrame implements ActionListener {
 
 		Dimension desktopSize = dp.getSize();
 		Dimension frameSize = jif.getSize();
-		jif.setLocation((desktopSize.width - frameSize.width) / 4, (desktopSize.height - frameSize.height) / 4);
+		jif.setLocation((desktopSize.width - frameSize.width) / 2, (desktopSize.height - frameSize.height) / 2);
 	}
 
 	void Salir() {

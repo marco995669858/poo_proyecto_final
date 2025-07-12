@@ -31,6 +31,12 @@ public class EncargadoMatricula {
 		this.telefono = telefono;
 		this.usuario = usuario;
 	}
+	
+	public EncargadoMatricula(int idEncargadoMatricula, String apellidos, String nombres) {
+		this.idEncargadoMatricula = idEncargadoMatricula;
+		this.apellidos = apellidos;
+		this.nombres = nombres;
+	}
 
 	public int getIdEncargadoMatricula() {
 		return idEncargadoMatricula;
@@ -95,4 +101,23 @@ public class EncargadoMatricula {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}	
+	
+	@Override
+    public String toString() {
+        // Esto es lo que se muestra en el JComboBox
+        return apellidos + " " + nombres; // O puedes usar: return id + " - " + nombre;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EncargadoMatricula)) return false;
+        EncargadoMatricula other = (EncargadoMatricula) o;
+        return this.idEncargadoMatricula == other.idEncargadoMatricula; // Solo compara por ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(idEncargadoMatricula); // Usa solo el ID para el hash
+    }
 }

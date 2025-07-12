@@ -20,6 +20,11 @@ public class Curso {
 		this.credito = credito;
 		this.usuario = usuario;
 	}
+	
+	public Curso(int idCurso,String nombreCurso) {
+		this.idCurso = idCurso;
+		this.nombreCurso = nombreCurso;
+	}
 
 	public int getIdCurso() {
 		return idCurso;
@@ -53,6 +58,22 @@ public class Curso {
 		this.usuario = usuario;
 	}
 	
-	
+	@Override
+    public String toString() {
+        // Esto es lo que se muestra en el JComboBox
+        return nombreCurso; // O puedes usar: return id + " - " + nombre;
+    }
 
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Curso)) return false;
+        Curso other = (Curso) o;
+        return this.idCurso == other.idCurso; // Solo compara por ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(idCurso); // Usa solo el ID para el hash
+    }
 }

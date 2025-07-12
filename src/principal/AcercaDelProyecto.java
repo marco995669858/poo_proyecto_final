@@ -31,7 +31,7 @@ public class AcercaDelProyecto extends JInternalFrame implements ActionListener 
 		
 		JLabel lblTienda = new JLabel("COLEGIO FE Y ALEGRIA 1.0");
 		lblTienda.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblTienda.setBounds(165, 11, 98, 14);
+		lblTienda.setBounds(110, 12, 232, 14);
 		getContentPane().add(lblTienda);
 		
 		JSeparator separator = new JSeparator();

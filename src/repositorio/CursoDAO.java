@@ -15,7 +15,7 @@ import util.Constantes;
 
 public class CursoDAO {
 
-	public List<Curso> obtenerUsuarios() {
+	public List<Curso> obtenerCursos() {
 		String sql = "SELECT * FROM tb_curso where TX_FSITREG = '1'";
 		List<Curso> curso = new ArrayList<Curso>();
 
@@ -28,7 +28,7 @@ public class CursoDAO {
 						rs.getString("TX_USUREG")));
 			}
 		} catch (Exception e) {
-			System.err.println("Error al obtener usuarios: " + e.getMessage());
+			System.err.println("Error al obtener cursos: " + e.getMessage());
 			e.printStackTrace();
 		}
 		

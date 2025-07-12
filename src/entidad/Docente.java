@@ -33,6 +33,12 @@ public class Docente {
 		this.telefono = telefono;
 		this.usuario = usuario;
 	}
+	
+	public Docente(int idDocente,String apellidos, String nombres) {
+		this.idDocente = idDocente;
+		this.apellidos = apellidos;
+		this.nombres = nombres;
+	}
 
 	public int getIdDocente() {
 		return idDocente;
@@ -97,6 +103,25 @@ public class Docente {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+	
+	@Override
+    public String toString() {
+        // Esto es lo que se muestra en el JComboBox
+        return apellidos + " " + nombres; // O puedes usar: return id + " - " + nombre;
+    }
+	
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Docente)) return false;
+        Docente other = (Docente) o;
+        return this.idDocente == other.idDocente; // Solo compara por ID
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(idDocente); // Usa solo el ID para el hash
+    }
 	
 	
 }
